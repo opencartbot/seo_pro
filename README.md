@@ -1,8 +1,8 @@
 # Free SEO Pro for OpenCart
 Free extension to create clean URLs (also sometimes referred to as RESTful URLs, user-friendly URLs, pretty URLs or search engine-friendly URLs)
 
-[Download extension for OpenCart 2.3.x.x](https://github.com/eniarku/seo_pro/raw/main/seo_pro_oc23.ocmod.zip)<br/>
-[Download extension for OpenCart 3.x.x.x](https://github.com/eniarku/seo_pro/raw/main/seo_pro_oc3.ocmod.zip)
+[Download extension for OpenCart 2.3.x.x](https://github.com/opencartbot/seo_pro/raw/main/seo_pro_oc23.ocmod.zip)<br/>
+[Download extension for OpenCart 3.x.x.x](https://github.com/opencartbot/seo_pro/raw/main/seo_pro_oc3.ocmod.zip)
 
 ### Using
 Install ocmod.zip and update modification cache. 
