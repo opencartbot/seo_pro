@@ -296,9 +296,15 @@ class ControllerStartupSeoPro extends Controller {
 	}
 
 	private function validate() {
+
+		if (php_sapi_name() === 'cli') {
+			return;
+		}
+
 		if (isset($this->request->get['route']) && $this->request->get['route'] == 'error/not_found') {
 			return;
 		}
+
 		if (ltrim($this->request->server['REQUEST_URI'], '/') =='sitemap.xml') {
 			if ($this->config->get('sitemap_ml_status')) {
 				$this->request->get['route'] = 'feed/sitemap_ml';
@@ -353,6 +359,6 @@ class ControllerStartupSeoPro extends Controller {
 			}
 
 		return urldecode(http_build_query(array_diff_key($this->request->get, array_flip($exclude))));
-		}
 	}
-?>
+
+}

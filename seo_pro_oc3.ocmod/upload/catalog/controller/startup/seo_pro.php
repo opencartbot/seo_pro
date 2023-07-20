@@ -324,9 +324,15 @@ class ControllerStartupSeoPro extends Controller {
 	}
 
 	private function validate() {
+
+		if (php_sapi_name() === 'cli') {
+			return;
+		}
+
 		if (isset($this->request->get['route']) && $this->request->get['route'] == 'error/not_found') {
 			return;
 		}
+		
 		if (ltrim($this->request->server['REQUEST_URI'], '/') =='sitemap.xml') {
 			if ($this->config->get('feed_sitemap_ml_status')) {
 				$this->request->get['route'] = 'extension/feed/sitemap_ml';

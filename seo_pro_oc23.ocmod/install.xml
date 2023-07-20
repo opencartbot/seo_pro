@@ -15,14 +15,11 @@
 	$registry->set('db', $db);
 
 	$query = $db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE store_id = '0' AND `key`='config_seo_url_type'");
-	if (!empty($query->row['value'])) {
-		$seo_type = $query->row['value'];
-	} else {
-		$seo_type = 'seo_pro';
-	}
-	if (!$seo_type) {
-		$seo_type = 'seo_url';
-	}
+	if ($query->num_rows) {
+        $seo_type = $query->row['value'];
+    } else {
+        $seo_type = 'seo_url';
+    }
 			]]></add>
 		</operation>
 		<operation error="log">
