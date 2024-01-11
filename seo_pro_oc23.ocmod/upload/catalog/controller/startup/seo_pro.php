@@ -307,9 +307,9 @@ class ControllerStartupSeoPro extends Controller {
 
 		if (ltrim($this->request->server['REQUEST_URI'], '/') =='sitemap.xml') {
 			if ($this->config->get('sitemap_ml_status')) {
-				$this->request->get['route'] = 'feed/sitemap_ml';
+				$this->request->get['route'] = 'extension/feed/sitemap_ml';
 			} else {
-				$this->request->get['route'] = 'feed/google_sitemap';
+				$this->request->get['route'] = 'extension/feed/google_sitemap';
 			}
 			return;
 		}
