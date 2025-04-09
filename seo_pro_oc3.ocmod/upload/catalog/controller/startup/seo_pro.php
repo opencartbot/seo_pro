@@ -281,7 +281,7 @@ class ControllerStartupSeoPro extends Controller {
 
 		if (!isset($path[$product_id])) {
 			$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . $product_id . "' ORDER BY main_category DESC LIMIT 1");
-
+			if (empty($path) || !is_array($path)) $path = [];
 			$path[$product_id] = $this->getPathByCategory($query->num_rows ? (int)$query->row['category_id'] : 0);
 
 			$this->cache->set('product.seopath', $path);
