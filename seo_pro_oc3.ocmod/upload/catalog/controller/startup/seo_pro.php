@@ -50,7 +50,7 @@ class ControllerStartupSeoPro extends Controller {
 				if (isset($this->cache_data['keywords'][$keyword])) {
 					$rows[] = array('keyword' => $keyword, 'query' => $this->cache_data['keywords'][$keyword]);
 				} elseif ($keyword!='') {
-					$query_multilang = $this->db->query("SELECT `query` FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $keyword ."'");
+					$query_multilang = $this->db->query("SELECT `query` FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($keyword) ."'");
 					if ($query_multilang->row) $rows[] = array('keyword' => $keyword, 'query' => $query_multilang->row['query']);
 				}
 			}
@@ -280,7 +280,7 @@ class ControllerStartupSeoPro extends Controller {
 		}
 
 		if (!isset($path[$product_id])) {
-			$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . $product_id . "' ORDER BY main_category DESC LIMIT 1");
+			$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' ORDER BY main_category DESC LIMIT 1");
 			if (empty($path) || !is_array($path)) $path = [];
 			$path[$product_id] = $this->getPathByCategory($query->num_rows ? (int)$query->row['category_id'] : 0);
 
